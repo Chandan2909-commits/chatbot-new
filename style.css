@@ -2059,57 +2059,76 @@ mark {
 
     /* Home Tab */
     .home-hero {
-        padding: 60px 16px 90px !important;
+        padding: 60px 20px 100px !important;
     }
 
     .home-hero h2 {
-        font-size: 1.5rem;
-        margin: 70px 0 6px 0;
+        font-size: 1.8rem;
+        margin: 80px 0 8px 0;
     }
 
     .home-hero p {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .chat-logo {
-        width: 30px;
-        height: 30px;
-        top: 10px;
-        left: 14px;
+        width: 32px;
+        height: 32px;
+        top: 12px;
+        left: 16px;
     }
 
     .home-hero-actions {
-        top: 10px;
-        right: 15px;
+        top: 12px;
+        right: 16px;
+        gap: 6px;
     }
 
     .home-hero-actions .header-btn {
-        padding: 6px;
+        padding: 8px;
     }
 
-    .home-message-section,
+    .home-message-section {
+        padding: 0 16px 12px !important;
+        margin-top: -40px;
+    }
+
     .home-help-section {
-        padding: 0 10px 8px !important;
-        margin-top: -30px;
+        padding: 0 16px 16px !important;
+        margin-top: 16px;
     }
 
     .home-section {
-        margin: 6px 10px;
-        padding: 12px 16px;
+        margin: 0 0 8px 0;
+        padding: 14px 18px;
     }
 
     .section-title {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .section-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
     .help-search-box {
-        margin: 0 4px;
-        width: calc(100% - 8px);
-        padding: 12px;
+        margin: 0;
+        width: 100%;
+        padding: 14px;
+    }
+
+    .help-search-input-wrapper {
+        margin-bottom: 14px;
+    }
+
+    .help-search-input-wrapper input {
+        padding: 12px 14px;
+        padding-right: 42px;
+    }
+
+    .message-suggestions .suggestion-item {
+        padding: 10px 0;
+        margin-bottom: 0;
     }
 
     /* Messages */
@@ -2270,21 +2289,29 @@ mark {
     }
 
     .home-hero h2 {
-        font-size: 1.3rem;
-        margin: 60px 0 5px 0;
+        font-size: 1.6rem;
+        margin: 70px 0 6px 0;
     }
 
     .home-hero p {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .home-hero {
-        padding: 55px 14px 75px !important;
+        padding: 60px 16px 90px !important;
     }
 
     .chat-logo {
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .home-message-section {
+        margin-top: -35px;
+    }
+
+    .home-help-section {
+        margin-top: 12px;
     }
 
     .message-content {
