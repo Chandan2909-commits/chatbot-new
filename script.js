@@ -36,8 +36,8 @@ window.switchToMessages = function() {
     homeTab.style.display = 'none';
     messagesTab.style.display = 'flex';
     messagesTab.style.flexDirection = 'column';
-    messagesTab.style.gap = '16px';
-    messagesTab.style.padding = '20px';
+    messagesTab.style.gap = '0';
+    messagesTab.style.padding = '0';
     document.getElementById('help-tab').style.display = 'none';
     document.getElementById('chat-input-area').style.display = 'flex';
     
@@ -45,8 +45,39 @@ window.switchToMessages = function() {
     document.querySelector('[data-tab="messages"]').classList.add('active');
     
     if (messagesTab.children.length === 0) {
+        // Add header
+        const headerDiv = document.createElement('div');
+        headerDiv.classList.add('messages-header');
+        headerDiv.innerHTML = `
+            <div class="messages-header-left">
+                <div class="messages-header-title">Kylie</div>
+                <div class="messages-header-status">Online</div>
+            </div>
+            <button class="messages-header-close" onclick="closeMessagesTab()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        `;
+        messagesTab.appendChild(headerDiv);
+        
+        // Add content container
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('messages-content');
+        contentDiv.id = 'messages-content';
+        messagesTab.appendChild(contentDiv);
+        
         showWelcomeMessage();
     }
+};
+
+window.closeMessagesTab = function() {
+    homeTab.style.display = 'block';
+    messagesTab.style.display = 'none';
+    document.getElementById('chat-input-area').style.display = 'none';
+    document.querySelectorAll('.chat-bottom-nav .nav-item').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('[data-tab="home"]').classList.add('active');
 };
 
 // Switch to Help tab
@@ -85,7 +116,7 @@ function addMessage(text, sender, isHtml = false) {
         // Add Kylie avatar for bot messages
         const avatarDiv = document.createElement('div');
         avatarDiv.classList.add('bot-avatar');
-        avatarDiv.textContent = 'Kylie';
+        avatarDiv.textContent = 'K';
         messageDiv.appendChild(avatarDiv);
     }
 
@@ -106,10 +137,12 @@ function addMessage(text, sender, isHtml = false) {
 
     messageDiv.appendChild(contentDiv);
     messageDiv.appendChild(timeDiv);
-    messagesTab.appendChild(messageDiv);
+    
+    const messagesContent = document.getElementById('messages-content') || messagesTab;
+    messagesContent.appendChild(messageDiv);
 
     // Scroll to bottom
-    messagesTab.scrollTop = messagesTab.scrollHeight;
+    messagesContent.scrollTop = messagesContent.scrollHeight;
 }
 
 // Format text for better display
