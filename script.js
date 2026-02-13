@@ -32,7 +32,7 @@ const sendBtn = document.querySelector('.send-btn');
 const statusText = document.querySelector('.status-text');
 
 // Switch to Messages tab
-window.switchToMessages = function() {
+window.switchToMessages = function () {
     homeTab.style.display = 'none';
     messagesTab.style.display = 'flex';
     messagesTab.style.flexDirection = 'column';
@@ -40,10 +40,10 @@ window.switchToMessages = function() {
     messagesTab.style.padding = '0';
     document.getElementById('help-tab').style.display = 'none';
     document.getElementById('chat-input-area').style.display = 'flex';
-    
+
     document.querySelectorAll('.chat-bottom-nav .nav-item').forEach(btn => btn.classList.remove('active'));
     document.querySelector('[data-tab="messages"]').classList.add('active');
-    
+
     if (messagesTab.children.length === 0) {
         // Add header
         const headerDiv = document.createElement('div');
@@ -66,18 +66,18 @@ window.switchToMessages = function() {
             </button>
         `;
         messagesTab.appendChild(headerDiv);
-        
+
         // Add content container
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('messages-content');
         contentDiv.id = 'messages-content';
         messagesTab.appendChild(contentDiv);
-        
+
         showWelcomeMessage();
     }
 };
 
-window.closeMessagesTab = function() {
+window.closeMessagesTab = function () {
     homeTab.style.display = 'block';
     messagesTab.style.display = 'none';
     document.getElementById('chat-input-area').style.display = 'none';
@@ -86,15 +86,15 @@ window.closeMessagesTab = function() {
 };
 
 // Switch to Help tab
-window.switchToHelp = function() {
+window.switchToHelp = function () {
     homeTab.style.display = 'none';
     messagesTab.style.display = 'none';
     document.getElementById('help-tab').style.display = 'block';
     document.getElementById('chat-input-area').style.display = 'none';
-    
+
     document.querySelectorAll('.chat-bottom-nav .nav-item').forEach(btn => btn.classList.remove('active'));
     document.querySelector('[data-tab="help"]').classList.add('active');
-    
+
     // Reset to main help view
     document.getElementById('help-main').style.display = 'block';
     document.getElementById('help-category').style.display = 'none';
@@ -104,7 +104,7 @@ window.switchToHelp = function() {
 };
 
 // Ask question from home
-window.askQuestion = function(question) {
+window.askQuestion = function (question) {
     switchToMessages();
     setTimeout(() => {
         chatInput.value = question;
@@ -127,7 +127,7 @@ function addMessage(text, sender, isHtml = false) {
 
     const contentDiv = document.createElement('div');
     contentDiv.classList.add('message-content');
-    
+
     if (isHtml) {
         contentDiv.innerHTML = text;
     } else {
@@ -142,7 +142,7 @@ function addMessage(text, sender, isHtml = false) {
 
     messageDiv.appendChild(contentDiv);
     messageDiv.appendChild(timeDiv);
-    
+
     const messagesContent = document.getElementById('messages-content') || messagesTab;
     messagesContent.appendChild(messageDiv);
 
@@ -535,40 +535,40 @@ function showVerificationForm() {
 }
 
 // Submit verification
-window.submitVerification = async function() {
+window.submitVerification = async function () {
     const name = document.getElementById('user-name').value.trim();
     const email = document.getElementById('user-email').value.trim();
     const countryCode = document.getElementById('country-code').value;
     const phone = document.getElementById('user-phone').value.trim();
     const errorDiv = document.getElementById('verification-error');
     const submitBtn = document.querySelector('.verify-btn');
-    
+
     // Validate name
     if (!name || name.length < 2) {
         errorDiv.textContent = 'Please enter your full name';
         return;
     }
-    
+
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         errorDiv.textContent = 'Please enter a valid email address';
         return;
     }
-    
+
     // Validate phone (digits only, 7-15 digits)
     const phoneRegex = /^\d{7,15}$/;
     if (!phoneRegex.test(phone)) {
         errorDiv.textContent = 'Please enter a valid phone number (7-15 digits)';
         return;
     }
-    
+
     // Show loading on submit button
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<div class="btn-loader"></div>';
-    
+
     const fullPhone = "'" + countryCode + ' ' + phone;
-    
+
     // Send to Google Sheets
     try {
         const payload = {
@@ -581,33 +581,33 @@ window.submitVerification = async function() {
         await fetch(GOOGLE_SHEET_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
     } catch (error) {
         console.error('Failed to send to Google Sheets:', error);
     }
-    
+
     // Mark as verified and store user info
     state.user_verified = true;
     state.user_name = name;
     state.user_email = email;
     state.user_phone = fullPhone;
     errorDiv.textContent = '';
-    
+
     // Update button to verified state
     submitBtn.innerHTML = 'Verified ✓';
-    
+
     // Disable form
     document.getElementById('user-name').disabled = true;
     document.getElementById('user-email').disabled = true;
     document.getElementById('country-code').disabled = true;
     document.getElementById('user-phone').disabled = true;
-    
+
     // Re-enable chat input
     chatInput.disabled = false;
     sendBtn.disabled = false;
-    
+
     // Process the pending message
     if (state.pending_first_message) {
         processPendingMessage();
@@ -618,7 +618,7 @@ window.submitVerification = async function() {
 async function processPendingMessage() {
     const input = state.pending_first_message;
     state.pending_first_message = null;
-    
+
     // Check message limit
     state.message_count++;
     if (state.message_count > 5) {
@@ -727,17 +727,17 @@ window.startNewChat = function () {
 };
 
 // File attachment handlers
-window.handleFileUpload = function(event) {
+window.handleFileUpload = function (event) {
     const files = Array.from(event.target.files);
     files.forEach(file => {
-        state.attached_files.push({name: file.name, type: 'file'});
+        state.attached_files.push({ name: file.name, type: 'file' });
     });
     updateAttachmentPreview();
     event.target.value = '';
 };
 
-window.handleVoiceRecord = function() {
-    state.attached_files.push({name: 'Voice message', type: 'voice'});
+window.handleVoiceRecord = function () {
+    state.attached_files.push({ name: 'Voice message', type: 'voice' });
     updateAttachmentPreview();
 };
 
@@ -756,7 +756,7 @@ function updateAttachmentPreview() {
     `).join('');
 }
 
-window.removeAttachment = function(index) {
+window.removeAttachment = function (index) {
     state.attached_files.splice(index, 1);
     updateAttachmentPreview();
 };
@@ -769,12 +769,12 @@ function clearAttachments() {
 // Send chat message to Google Sheets
 async function sendChatToSheets(message) {
     if (!state.user_verified || !state.user_email) return;
-    
+
     try {
         await fetch(GOOGLE_SHEET_URL, {
             method: 'POST',
             mode: 'no-cors',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 name: state.user_name || '',
                 email: state.user_email,
@@ -828,14 +828,14 @@ closeBtn.addEventListener('click', () => {
 
 // Bottom Navigation Handler
 document.querySelectorAll('.chat-bottom-nav .nav-item').forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
         document.querySelectorAll('.chat-bottom-nav .nav-item').forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
-        
+
         const tab = this.getAttribute('data-tab');
         // Tab functionality can be extended here
         console.log('Switched to:', tab);
-        
+
         if (tab === 'home') {
             homeTab.style.display = 'block';
             messagesTab.style.display = 'none';
@@ -852,19 +852,31 @@ document.querySelectorAll('.chat-bottom-nav .nav-item').forEach(item => {
 // FAQ Data Structure - Comprehensive Sharkfunded Knowledge Base
 const FAQ_DATA = {
     evaluation: {
-        title: "Evaluation Models",
+        title: "All Collections ",
         questions: [
             {
-                q: "What is the 2-Step Evaluation Model?",
-                a: "<p>The 2-Step Evaluation is our gold standard vetting process designed to verify trader skill over an extended period.</p><p><strong>Phase 1 - Initial Assessment:</strong></p><ul><li>Profit Target: 8%</li><li>Max Daily Loss: 5%</li><li>Max Total Loss: 10%</li><li>Leverage: 1:100</li><li>No time limit</li></ul><p><strong>Phase 2 - Verification:</strong></p><ul><li>Profit Target: 5%</li><li>Max Daily Loss: 5%</li><li>Max Total Loss: 10%</li><li>Leverage: 1:100</li><li>No time limit</li></ul><p>This two-phased approach ensures your performance results from a robust strategy rather than fortunate trades.</p>"
+                q: "What is The Only Prop?",
+                a: "<p>The Only Prop is a hedge-fund-backed proprietary trading firm that provides traders with funded capital through a structured evaluation process. Our goal is to identify disciplined traders and allocate real capital to those who demonstrate strong risk management and consistency.</p><p>Unlike traditional prop firms, our model is designed to reduce unnecessary restrictions and allow traders to focus purely on performance.</p><p>We offer two evaluation pathways:</p><ul><li>One-Step Challenge</li><li>Two-Step Challenge</li></ul><p>Both challenges are manually reviewed and designed to assess trading discipline, decision-making, and capital preservation skills before funding is granted.</p>"
             },
             {
-                q: "What is the 1-Step Evaluation Model?",
-                a: "<p>The 1-Step Evaluation is a streamlined alternative for experienced traders who wish to bypass the two-phase process.</p><p><strong>Requirements:</strong></p><ul><li>Profit Target: 10%</li><li>Max Daily Loss: 3% (Balance-based)</li><li>Max Total Loss: 6% (Static)</li><li>Leverage: 1:50</li><li>Payout Ratio: Up to 90%</li><li>No time limit</li></ul><p>While faster, it imposes stricter risk parameters to compensate for the lack of a second verification stage. Ideal for traders with high win rates and low volatility strategies.</p>"
+                q: "What makes The Only Prop different?",
+                a: "<p>The Only Prop operates with a simplified and trader-focused risk model:</p><ul><li>Static 10% maximum drawdown</li><li>No daily drawdown limits</li><li>No trading restrictions on funded accounts</li><li>Manual challenge evaluation process</li><li>Backed by a hedge fund capital model</li></ul><p>Once funded, traders operate with significantly fewer constraints compared to industry-standard prop firm models.</p><p>Top-performing traders may also be selected for an exclusive opportunity to trade directly from our physical trading office, where we allocate hedge fund capital to a small percentage of consistently profitable traders. Only about 1% of traders reach this level.</p>"
             },
             {
-                q: "What are the account tiers and fees?",
-                a: "<p>We offer multiple account sizes to accommodate diverse trading needs:</p><table style='width:100%; border-collapse: collapse; margin: 10px 0;'><tr style='background: #f5f5f5;'><th style='padding: 8px; border: 1px solid #ddd;'>Account Size</th><th style='padding: 8px; border: 1px solid #ddd;'>Fee</th><th style='padding: 8px; border: 1px solid #ddd;'>1-Step Target</th><th style='padding: 8px; border: 1px solid #ddd;'>2-Step Phase 1</th></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>$5,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$49</td><td style='padding: 8px; border: 1px solid #ddd;'>$500</td><td style='padding: 8px; border: 1px solid #ddd;'>$400</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>$10,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$89</td><td style='padding: 8px; border: 1px solid #ddd;'>$1,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$800</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>$25,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$149</td><td style='padding: 8px; border: 1px solid #ddd;'>$2,500</td><td style='padding: 8px; border: 1px solid #ddd;'>$2,000</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>$50,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$289</td><td style='padding: 8px; border: 1px solid #ddd;'>$5,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$4,000</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>$100,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$479</td><td style='padding: 8px; border: 1px solid #ddd;'>$10,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$8,000</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>$200,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$929</td><td style='padding: 8px; border: 1px solid #ddd;'>$20,000</td><td style='padding: 8px; border: 1px solid #ddd;'>$16,000</td></tr></table><p>The evaluation fee is often refundable upon your first successful payout in the funded phase.</p>"
+                q: "How do I get started with The Only Prop?",
+                a: "<p>Getting started with The Only Prop is simple and straightforward. Follow these steps to begin your journey toward a funded trading account:</p><p><strong>1. Visit the Checkout Page:</strong> Choose the challenge that best fits your trading style.</p><p><strong>2. Select Your Challenge:</strong> Pick between our One-Step Challenge or Two-Step Challenge models.</p><p><strong>3. Trade by The Only Prop Rules:</strong> Trade the evaluation account while respecting the challenge objectives and the 10% static drawdown rule (no daily drawdown limit).</p><p><strong>4. Pass the Challenge:</strong> Once the objectives are completed, our team manually reviews the account to ensure the evaluation requirements were met.</p><p><strong>5. Get Funded & Start Trading:</strong> After successful verification, you will receive your funded account and can begin trading and withdrawing profits according to our payout policy.</p>"
+            },
+            {
+                q: "Who can join The Only Prop?",
+                a: "<p>The Only Prop is designed for retail traders worldwide who want to demonstrate their trading skills, improve performance, and earn profits through our funded account program. We welcome individuals who are passionate about trading, regardless of prior experience.</p><p>The Only Prop is open to traders from diverse backgrounds and experience levels. Both beginners and experienced traders are welcome to participate. All participants must be at least 18 years of age.</p><p><strong>Restricted Jurisdictions & Compliance:</strong></p><p>To comply with international regulations, The Only Prop does not provide services to individuals who are located in or are residents of the following countries or regions:</p><ul><li>Democratic People’s Republic of Korea (North Korea)</li><li>Iran</li><li>South Sudan</li><li>Sudan</li><li>Yemen</li></ul><p>Additionally, we do not provide services to individuals or entities listed on international sanctions lists or global anti-terrorism compliance lists.</p><p><strong>Additional Restrictions:</strong></p><ul><li>Individuals listed on international sanctions lists</li><li>Persons with criminal histories involving financial crimes or terrorism</li><li>Individuals previously banned due to contract violations or policy breaches</li></ul>"
+            },
+            {
+                q: "The Only Prop — Two-Step Challenge Model",
+                a: "<p>The Only Prop Two-Step Challenge consists of two evaluation phases. Traders must successfully complete both phases to qualify for a funded account. Each phase evaluates trading discipline, consistency, and risk management before capital allocation.</p><p><strong>Phase 1 — Performance Evaluation</strong></p><p>This phase evaluates overall trading ability.</p><p>Trading Objectives:</p><ul><li>Achieve an 8% profit target</li><li>Follow all trading rules</li><li>Respect maximum drawdown rules</li></ul><p>After completing Phase 1, the account enters a 24-hour review period. Once approved, the trader advances to Phase 2.</p><p><strong>Phase 2 — Verification</strong></p><p>This phase confirms consistent performance.</p><p>Trading Objectives:</p><ul><li>Achieve a 5% profit target</li><li>Continue following all trading rules</li></ul><p>After Phase 2 completion, the account undergoes another 24-hour review before funding. This 24-hour review applies to every stage upgrade.</p>"
+            },
+            {
+                q: "The Only Prop — One-Step Challenge Model",
+                a: "<p>The Only Prop One-Step Challenge is a single-phase evaluation designed for traders who want a straightforward path to funding. This phase evaluates trading discipline, consistency, and risk management before capital allocation.</p><p><strong>Phase 1 — Verification</strong></p><p>Trading Objectives:</p><ul><li>Achieve a 10% profit target</li><li>Follow all trading rules</li><li>Respect maximum drawdown rules</li></ul><p>After completing the profit target, the account enters a 24-hour trading behavior review. Once approved, the trader proceeds to the funded stage. This 24-hour review applies to all stage upgrades.</p>"
             }
         ]
     },
@@ -872,117 +884,153 @@ const FAQ_DATA = {
         title: "Drawdown & Risk Management",
         questions: [
             {
-                q: "How does Balance-Based Daily Drawdown work?",
-                a: "<p>We utilize a Daily Loss Limit based on the starting balance of each day. The day resets at 5:00 PM EST (Server Time).</p><p><strong>Example:</strong></p><ul><li>Starting balance: $100,000</li><li>Daily limit: 5%</li><li>Account breaches if equity/balance drops below $95,000 during that 24-hour period</li></ul><p><strong>Critical Nuances:</strong></p><ul><li>Based on balance, not equity</li><li>Floating profits don't increase next day's allowance until closed</li><li>Floating losses at daily reset tighten the next session's limit</li></ul><p>This provides a more objective and less volatile benchmark for performance.</p>"
+                q: "Maximum Drawdown Rule",
+                a: "<p>The Only Prop uses a static drawdown model.</p><ul><li><strong>Maximum Drawdown:</strong> 10% of initial account size</li><li><strong>Daily Drawdown:</strong> None</li></ul><p>Your balance or equity must never fall below the maximum loss limit.</p><p><strong>Example:</strong></p><ul><li>Account Size: $100,000</li><li>Maximum Drawdown: $10,000</li><li>Minimum Equity Allowed: $90,000</li></ul>"
             },
             {
-                q: "What is Static vs. Trailing Drawdown?",
-                a: "<p>THE ONLY PROP uses a <strong>Static Maximum Total Drawdown</strong> - a significant advantage for traders.</p><p><strong>Static Drawdown:</strong></p><ul><li>Floor remains fixed at initial percentage of starting balance</li><li>Example: $100,000 account with 10% static = $90,000 floor</li><li>If you grow to $110,000, you have $20,000 buffer ($110,000 - $90,000)</li><li>Rewards profitable traders with a safety cushion</li></ul><p><strong>Trailing Drawdown (Not Used):</strong></p><ul><li>Floor moves up as equity increases</li><li>Can trap profits and make position management difficult</li></ul><p>Our static model allows you to withstand market volatility without losing funded status.</p>"
+                q: "Single-Trade Risk Rule",
+                a: "<p>A trader may risk up to 20% of the total drawdown allowance in one trade.</p><p><strong>Example:</strong></p><ul><li>Account Size: $100,000</li><li>Total Drawdown Allowance: $10,000</li><li>Maximum Risk Per Trade: $2,000</li></ul><p>Exceeding this limit will be treated as a violation.</p>"
             },
             {
-                q: "How to avoid drawdown violations?",
-                a: "<p><strong>Professional Risk Management:</strong></p><ul><li>Use 1-2% risk per trade maximum</li><li>Always set stop losses before entering trades</li><li>Monitor daily and total drawdown constantly</li><li>Avoid revenge trading after losses</li><li>Take breaks during losing streaks</li><li>Never over-leverage positions</li><li>Keep detailed trading journal</li></ul><p>The most frequent cause of account termination is drawdown violations. Discipline and risk management are essential for long-term success.</p>"
+                q: "Account Violation (Hard Breach)",
+                a: "<p>A hard breach represents a serious violation and results in immediate account termination.</p>"
             }
         ]
     },
     trading: {
-        title: "Trading Rules & Conduct",
+        title: "Weekend Trading",
         questions: [
             {
-                q: "What are the News Trading restrictions?",
-                a: "<p>News trading rules differ between evaluation and funded phases.</p><p><strong>Evaluation Phase:</strong></p><ul><li>Generally permitted</li><li>Exercise caution during high-impact events</li></ul><p><strong>Funded Phase:</strong></p><ul><li>Cannot open/close trades within 2-minute window of Red Folder events</li><li>Protects against extreme slippage and gapping</li><li>Trades opened before news with stop-loss are usually permitted</li></ul><p>This restriction protects the firm from toxic flow during temporary liquidity gaps.</p>"
+                q: "Is Weekend Holding Allowed?",
+                a: "<p><strong>Yes — Weekend Holding Is Allowed (With Prior Approval)</strong></p><p>Traders are permitted to hold positions over the weekend in both challenge and funded phases, but prior approval is required. To hold trades over the weekend, traders must email support before the market closes on Friday informing the team that positions will remain open.</p><p>Failure to notify support before the Friday market close will result in a hard breach and account termination.</p><p>You may keep trades open beyond the market close on Friday and continue managing them when the market reopens, provided approval has been granted.</p><p><strong>Important Things to Keep in Mind:</strong></p><ul><li>Markets may open with price gaps after the weekend</li><li>Slippage or increased volatility can occur at market open</li><li>The 10% maximum static drawdown rule still applies</li></ul><p>We strongly recommend managing risk carefully when holding positions over the weekend.</p>"
             },
             {
-                q: "What is Lot Size Consistency?",
-                a: "<p>We emphasize consistent position sizing to distinguish professional trading from gambling.</p><p><strong>Requirements:</strong></p><ul><li>Don't drastically change position sizes</li><li>Example: If you typically trade 1.0 lot, suddenly opening 50.0 lots is a violation</li><li>Success must be repeatable, not from a single lucky trade</li></ul><p><strong>Purpose:</strong></p><ul><li>Ensures strategy sustainability</li><li>Protects firm from concentration risk</li><li>Validates professional trading approach</li></ul>"
+                q: "Layering",
+                a: "<p>Opening more than three positions on the same instrument in the same direction simultaneously is not allowed.</p><p>Adding positions to a losing trade, grid trading, or recovery-based entries may be treated as a violation.</p><ul><li>Soft breach during evaluation.</li><li>Hard breach during funded stage.</li></ul>"
             },
             {
-                q: "What strategies are prohibited?",
-                a: "<p>The following strategies exploit platform mechanics rather than market movements:</p><p><strong>Prohibited:</strong></p><ul><li><strong>Latency Arbitrage:</strong> Using high-speed data feeds against slower platform quotes</li><li><strong>HFT:</strong> High-frequency bots executing hundreds of trades per second</li><li><strong>Copy Trading:</strong> Copying other Sharkfunded users' trades</li><li><strong>Reverse Trading/Hedging:</strong> Opening opposite positions across multiple accounts</li></ul><p><strong>Allowed:</strong></p><ul><li>Day trading</li><li>Swing trading</li><li>Scalping (within reason)</li><li>Technical/fundamental analysis strategies</li></ul>"
-            }
-        ]
-    },
-    platforms: {
-        title: "Trading Platforms & Technology",
-        questions: [
-            {
-                q: "What trading platforms are available?",
-                a: "<p>We provide diverse platforms for operational continuity:</p><p><strong>DXTrade:</strong></p><ul><li>Web-based, versatile platform</li><li>Sophisticated charting package</li><li>Integrated economic calendar</li><li>Intuitive multi-position management</li></ul><p><strong>Match-Trader:</strong></p><ul><li>Mobile-first approach</li><li>Seamless desktop-mobile transition</li><li>Fast execution speed</li><li>Proprietary interface feel</li></ul><p><strong>cTrader:</strong></p><ul><li>Level II pricing (depth of market)</li><li>Essential for large-volume traders</li><li>Manage slippage effectively</li></ul>"
+                q: "Toxic Trading Behavior (Soft Breach)",
+                a: "<p>Examples include:</p><ul><li>Ignoring risk management</li><li>Reckless trading behavior</li><li>Trading without a clear strategy</li><li>Emotion-driven trading</li></ul><p>Repeated violations may lead to restrictions or termination.</p>"
             },
             {
-                q: "What are the spreads and commissions?",
-                a: "<p>We provide Raw Spreads through our liquidity providers:</p><table style='width:100%; border-collapse: collapse; margin: 10px 0;'><tr style='background: #f5f5f5;'><th style='padding: 8px; border: 1px solid #ddd;'>Asset Class</th><th style='padding: 8px; border: 1px solid #ddd;'>Spread</th><th style='padding: 8px; border: 1px solid #ddd;'>Commission</th><th style='padding: 8px; border: 1px solid #ddd;'>Leverage</th></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Forex Majors</td><td style='padding: 8px; border: 1px solid #ddd;'>0.0-0.5 pips</td><td style='padding: 8px; border: 1px solid #ddd;'>$7/lot</td><td style='padding: 8px; border: 1px solid #ddd;'>1:100</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Gold (XAUUSD)</td><td style='padding: 8px; border: 1px solid #ddd;'>10-20 cents</td><td style='padding: 8px; border: 1px solid #ddd;'>$7/lot</td><td style='padding: 8px; border: 1px solid #ddd;'>1:20</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Indices</td><td style='padding: 8px; border: 1px solid #ddd;'>1.0-2.0 pts</td><td style='padding: 8px; border: 1px solid #ddd;'>$0/lot</td><td style='padding: 8px; border: 1px solid #ddd;'>1:20</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Crypto</td><td style='padding: 8px; border: 1px solid #ddd;'>Variable</td><td style='padding: 8px; border: 1px solid #ddd;'>$0/lot</td><td style='padding: 8px; border: 1px solid #ddd;'>1:2</td></tr></table><p>Lower leverage on volatile assets prevents excessive risk exposure.</p>"
+                q: "Excessive Risk-Taking / Over-Leveraging",
+                a: "<p>Examples:</p><ul><li>Using disproportionately large position sizes</li><li>Using maximum lot size repeatedly</li><li>Taking trades that can damage the account quickly</li><li>Relying heavily on leverage</li></ul>"
             },
             {
-                q: "How to deal with slippage and latency?",
-                a: "<p>Slippage is natural during high volatility with Market Execution.</p><p><strong>Mitigation Strategies:</strong></p><ul><li>Use Limit Orders instead of Market Orders when possible</li><li>Avoid trading during Rollover period (5:00 PM EST)</li><li>Ensure stable internet connection</li><li>Consider using VPS (Virtual Private Server)</li><li>Trade during high-liquidity sessions (London/NY overlap)</li></ul><p>Slippage is not manipulation - it's a natural market phenomenon during volatile periods.</p>"
+                q: "Martingale Trading Policy",
+                a: "<p>Martingale includes increasing position size after losses to recover drawdown.</p><p>Examples:</p><ul><li>Doubling lot size after a loss</li><li>Re-entering trades with larger size after loss</li><li>Progressive risk increase after losing trades</li></ul><p><strong>Consequences:</strong></p><ul><li>Challenge phase: Soft breach</li><li>Funded phase: Hard breach</li></ul><p>Expected behavior: consistent risk per trade.</p>"
+            },
+            {
+                q: "Gambling Behavior",
+                a: "<p>Examples:</p><ul><li>Random entries without analysis</li><li>Revenge trading</li><li>Emotional trading</li><li>Overtrading to recover losses</li></ul>"
+            },
+            {
+                q: "Overtrading",
+                a: "<p>Examples:</p><ul><li>Too many trades in a short time</li><li>Constant entries without confirmation</li><li>Emotion-driven execution</li></ul>"
+            },
+            {
+                q: "Tick Scalping",
+                a: "<p>Tick scalping refers to extremely fast trades capturing micro-movements.</p><p>Examples:</p><ul><li>Opening and closing trades within 120 seconds</li><li>High-frequency micro-scalping</li></ul><p>Up to 20% of total trades may be ignored. Beyond that, trades may be reviewed.</p>"
+            },
+            {
+                q: "Arbitrage Trading (Restricted)",
+                a: "<p>Opening trades to exploit price differences rather than market direction.</p><p>Example:</p><ul><li>Buy EURUSD</li><li>Sell GBPUSD to neutralize exposure.</li></ul><p>This may be treated as a violation.</p>"
+            },
+            {
+                q: "Hedging",
+                a: "<p>Improper hedging includes:</p><ul><li>Opposite trades on same instrument</li><li>Locking positions to remove exposure</li></ul>"
+            },
+            {
+                q: "Reverse Trading",
+                a: "<p>Examples:</p><ul><li>Intentionally losing trades</li><li>Offset trades across accounts</li><li>Manipulating exposure</li></ul><p>Trades placed within 15 minutes to neutralize exposure may be flagged.</p>"
+            },
+            {
+                q: "One-Sided Bias Trading",
+                a: "<p>Repeated trading in only one direction without justification may trigger review.</p>"
+            },
+            {
+                q: "News Trading",
+                a: "<p>News trading is fully allowed during both the challenge phases and the funded stage. Traders may open, close, and manage positions during:</p><ul><li>High-impact news releases</li><li>Economic announcements</li><li>Central bank speeches</li><li>Periods of increased market volatility</li></ul><p>There are no timing restrictions around news events. However, traders remain responsible for managing their own risk during volatile market conditions. Slippage, spreads, and rapid price movements may occur during news releases. All standard account rules, including the maximum drawdown rule, still apply.</p>"
             }
         ]
     },
     payouts: {
-        title: "Payouts & Profit Sharing",
+        title: "Withdrawals & Payouts",
         questions: [
             {
-                q: "What is the profit split structure?",
-                a: "<p>We offer industry-leading profit splits:</p><p><strong>Standard Split:</strong></p><ul><li>80% to trader</li><li>20% to firm</li></ul><p><strong>Enhanced Split:</strong></p><ul><li>Up to 90% to trader</li><li>Available through performance or account add-ons</li></ul><p>The majority of value created by you is retained by you. This is among the most competitive splits in the industry.</p>"
+                q: "What Is the Minimum Amount Required for a Withdrawal?",
+                a: "<p>To ensure efficient processing and reduce transaction costs, The Only Prop applies a minimum withdrawal requirement.</p><p><strong>Minimum Withdrawal Amount:</strong></p><ul><li>Minimum Withdrawal: 1% of the initial account size</li><li>Withdrawal requests below this amount cannot be processed.</li><li>Profits and eligible balances may be combined to meet the minimum requirement.</li><li>Giveaway accounts have a withdrawal limit of 2% only.</li></ul><p><strong>Why Is There a Minimum Withdrawal Requirement?</strong></p><p>The minimum withdrawal requirement exists to:</p><ul><li>Reduce administrative and processing overhead</li><li>Minimize transaction and network fees</li><li>Ensure a smoother payout experience for all traders</li></ul><p>Larger, less frequent withdrawals help keep payout operations efficient and reliable.</p>"
             },
             {
-                q: "How does the payout process work?",
-                a: "<p>Payouts are processed on a bi-weekly (14-day) cycle.</p><p><strong>Eligibility Requirements:</strong></p><ul><li>Funded account in net profit position</li><li>All active trades closed at payout request time</li><li>No trading rule violations during period</li><li>Account in good standing</li></ul><p><strong>Process:</strong></p><ul><li>Submit request through trader dashboard</li><li>Processing time: 24-72 hours typically</li><li>First payout requires KYC verification</li></ul>"
+                q: "What are the Withdrawal Methods?",
+                a: "<p>Available payout methods may include:</p><ul><li>Cryptocurrency (USDT and other supported crypto assets)</li><li>UPI transfers</li><li>Bank transfers</li><li>E-wallet payments (where available)</li></ul><p>Payment options may vary depending on location, availability, and payout method selected by the trader.</p>"
             },
             {
-                q: "What is the Scaling Plan?",
-                a: "<p>Our scaling plan transforms successful retail traders into institutional-scale fund managers.</p><p><strong>Criteria:</strong></p><ul><li>Achieve 10%+ total profit over consecutive 3 months</li><li>Receive at least 2 payouts during this period</li></ul><p><strong>Reward:</strong></p><ul><li>25% increase in account balance</li><li>Can scale up to $4,000,000 total</li></ul><p><strong>Example Growth ($200K account):</strong></p><ul><li>3 months: $250,000</li><li>6 months: $312,500</li><li>9 months: $390,625</li><li>12 months: $488,281</li></ul><p>This geometric growth incentivizes long-term, low-risk approaches.</p>"
+                q: "Requirements Before Withdrawing?",
+                a: "<p>Before submitting a withdrawal request, make sure the following conditions are met:</p><ul><li>Your profit meets the minimum withdrawal requirement of 1% of the initial account size</li><li>You have completed at least 5 trading days on the funded account</li><li>KYC verification is completed and approved</li><li>All trading rules and profit-split conditions are met</li><li>No active violations or restrictions exist on your account</li><li>The account balance is above the starting balance</li></ul><p><strong>Important Withdrawal Rule:</strong></p><p>Once a withdrawal request is submitted, no trading activity is allowed on the account. Placing any trade after requesting a payout will be treated as a hard breach, and the account may be terminated.</p>"
+            },
+            {
+                q: "How Long Does It Take to Receive a Withdrawal?",
+                a: "<p>The Only Prop processes withdrawal requests on a weekly payout cycle while ensuring all compliance and security checks are completed.</p><p><strong>Withdrawal Processing Time:</strong></p><p>Payout Processing Day: Wednesday. All approved withdrawal requests are processed on Wednesday each week. Once processed, the time required for funds to arrive depends on the selected payout method (crypto, UPI, bank transfer, or e-wallet). Most payouts are completed within 24–48 hours after Wednesday processing.</p><p><strong>Possible Delays:</strong></p><p>In some cases, withdrawals may take longer due to: Weekends, Public holidays, Banking hours or payment provider schedules, Additional compliance or security checks.</p><p><strong>When Does the Processing Time Start?</strong></p><p>Withdrawal processing begins once: A withdrawal request is submitted, KYC verification is fully approved, The trader has completed at least 5 trading days on the funded account, The account meets the minimum withdrawal requirement (1% of initial balance), The account passes all risk and compliance checks, No trades are placed after the withdrawal request.</p>"
             }
         ]
     },
     compliance: {
-        title: "Compliance & Verification",
+        title: "KYC & Verification",
         questions: [
             {
-                q: "What is the KYC/AML process?",
-                a: "<p>As a global entity, we operate within strict KYC and AML regulations.</p><p><strong>Required Documents:</strong></p><ul><li><strong>Identity Verification:</strong> Government-issued ID (Passport/Driver's License)</li><li><strong>Proof of Residence:</strong> Utility bill or bank statement</li><li><strong>Contractor Agreement:</strong> Professional services agreement signature</li></ul><p><strong>Processing:</strong></p><ul><li>Typically completed within 24-72 hours</li><li>Automated cross-reference against global sanction lists</li><li>Ensures compliance with international financial standards</li></ul>"
+                q: "Why Is Completing KYC Necessary for My Account?",
+                a: "<p>Completing the Know Your Customer (KYC) process is a mandatory step to maintain a secure, fair, and compliant trading environment at The Only Prop Firm.</p><p><strong>1. Legal & Regulatory Compliance:</strong> To comply with international regulations designed to prevent fraud, money laundering, identity misuse, and financial crime.</p><p><strong>2. Account Security & Protection:</strong> Adds an additional layer of security by linking trading accounts to verified personal information.</p><p><strong>3. Fair Trading Environment:</strong> Ensures that one individual does not operate multiple accounts and prevents duplicate or fraudulent accounts.</p><p><strong>4. Payout Eligibility:</strong> KYC verification must be completed before any payout request can be processed.</p>"
             },
             {
-                q: "Are there restricted countries?",
-                a: "<p>Due to international financial regulations, we cannot offer services to residents of certain jurisdictions.</p><p><strong>Typically Restricted:</strong></p><ul><li>Countries under OFAC sanctions (North Korea, Iran, Syria)</li><li>Jurisdictions with local bans on proprietary trading models</li><li>Regions with specific regulatory restrictions</li></ul><p>It is your responsibility to ensure you are legally permitted to trade in your home country. Contact support for specific country inquiries.</p>"
+                q: "What Documents Are Required for KYC Verification?",
+                a: "<p>To complete KYC verification, traders must submit valid documents confirming their identity and residential address.</p><p><strong>Personal Identification (Required):</strong> You must submit one valid government-issued photo ID.</p><ul><li>Passport (preferred)</li><li>Driver’s License</li><li>National ID Card</li></ul><p><strong>Important Requirements:</strong></p><ul><li>The document must be valid and not expired</li><li>The photo and personal details must be clear and readable</li><li>The name on the ID must match the name on your The Only Prop account</li></ul>"
             },
             {
-                q: "What happens if I breach my account?",
-                a: "<p><strong>Hard Breach:</strong></p><ul><li>Account permanently disabled</li><li>Occurs from rule violations (drawdown, prohibited strategies)</li></ul><p><strong>Reset Options:</strong></p><ul><li>Discounted retake/reset available</li><li>Recognizes that failure is part of learning process</li><li>Opportunity to try again with improved strategy</li></ul><p><strong>Soft Breach:</strong></p><ul><li>Minor violations may result in trade closure without account loss</li><li>Depends on specific account terms</li></ul>"
+                q: "How Long Does KYC Verification Take?",
+                a: "<p><strong>Instant Verification:</strong> In some cases, KYC may be approved instantly when documents are clear, valid, and meet all requirements.</p><p><strong>Standard Verification:</strong> Most KYC checks are completed within 1–2 business days after document submission.</p><p><strong>What Can Affect Verification Time?</strong></p><ul><li>Documents are blurry or cropped</li><li>Information does not match account details</li><li>Documents are expired or incomplete</li><li>Additional verification checks are required</li></ul><p><strong>If Verification Takes Longer Than Expected:</strong> Check your email for follow-up requests, confirm all required documents were submitted, or contact support for assistance.</p>"
+            },
+            {
+                q: "What Happens If My KYC Application Is Rejected?",
+                a: "<p>If your KYC application is rejected, it does not mean you are permanently disqualified. Rejections usually occur due to missing, unclear, or mismatched information and can typically be resolved quickly.</p><p><strong>Common Reasons for KYC Rejection:</strong> Blurry/low quality documents, expired documents, mismatched name/address, missing/incomplete documents, suspicious activity.</p><p><strong>What Happens After a Rejection?</strong></p><ul><li><strong>Rejection Notification:</strong> You will receive an email explaining the reason.</li><li><strong>Resubmission Opportunity:</strong> You will be allowed to resubmit corrected documents.</li></ul><p><strong>How Long Does Re-Verification Take?</strong> Typically 1–2 business days.</p><p><strong>How to Avoid KYC Rejection:</strong> Upload high-quality images, ensure documents are valid, double-check that names and addresses match exactly, submit complete documents.</p>"
             }
         ]
     },
     operations: {
-        title: "Funded Account Operations",
+        title: "Account Security & Access Rules",
         questions: [
             {
-                q: "What is the inactivity policy?",
-                a: "<p>Funded traders must be active market participants.</p><p><strong>Policy:</strong></p><ul><li>Accounts inactive for 30+ days may be suspended/terminated</li><li>Ensures capital is being utilized effectively</li><li>Allows other talented traders to access capital</li></ul><p><strong>To Maintain Active Status:</strong></p><ul><li>Place at least one trade per month</li><li>Communicate with support if taking planned break</li></ul>"
+                q: "What is the IP Address Policy?",
+                a: "<p>There is No IP address location restrictions for traders. Traders may access their accounts from different locations, devices, or networks without violating account rules.</p><p><strong>Account Access & Security:</strong></p><p>While there are no IP region restrictions, traders remain responsible for maintaining account security. The following practices are still prohibited:</p><ul><li>Account sharing</li><li>Unauthorized third-party access</li><li>Selling or transferring account access</li><li>Using compromised or stolen identities</li></ul><p>If suspicious account activity is detected, the Risk Management Team may request identity verification to protect the account.</p><p><strong>Important Notes:</strong></p><ul><li>Traders may travel and trade freely without notifying support</li><li>Logging in from different networks or locations is allowed</li><li>Using different devices is allowed</li><li>Basic account security monitoring still applies</li></ul>"
             },
             {
-                q: "What is the Buffer Strategy?",
-                a: "<p>Professional traders create an equity buffer for account protection.</p><p><strong>Strategy Options:</strong></p><table style='width:100%; border-collapse: collapse; margin: 10px 0;'><tr style='background: #f5f5f5;'><th style='padding: 8px; border: 1px solid #ddd;'>Strategy</th><th style='padding: 8px; border: 1px solid #ddd;'>Action</th><th style='padding: 8px; border: 1px solid #ddd;'>Result</th></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Aggressive</td><td style='padding: 8px; border: 1px solid #ddd;'>Withdraw all profits</td><td style='padding: 8px; border: 1px solid #ddd;'>Max cash flow, min buffer</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Balanced</td><td style='padding: 8px; border: 1px solid #ddd;'>Withdraw 70%, leave 30%</td><td style='padding: 8px; border: 1px solid #ddd;'>Moderate flow, growing buffer</td></tr><tr><td style='padding: 8px; border: 1px solid #ddd;'>Conservative</td><td style='padding: 8px; border: 1px solid #ddd;'>Leave until 5% buffer built</td><td style='padding: 8px; border: 1px solid #ddd;'>Delayed flow, max protection</td></tr></table><p>Since drawdown is static, leaving profits increases distance from breach threshold.</p>"
-            },
+                q: "What is the Inactivity Policy?",
+                a: "<p>To ensure active participation and proper account usage, The Only Prop enforces an inactivity rule across all account stages.</p><p><strong>Inactivity Rule:</strong></p><p>If a trading account remains inactive for 14 consecutive days, it will be treated as a hard breach, and the account will be terminated.</p><p>This rule applies to: Phase 1 accounts, Phase 2 accounts, and Funded accounts.</p><p><strong>What Counts as Inactivity?</strong></p><ul><li>No trades are placed</li><li>No trading activity occurs</li><li>The account remains idle for 14 continuous days</li></ul><p><strong>How to Avoid Inactivity Breach:</strong></p><ul><li>Place at least one trade within every 14-day period</li><li>Maintain regular trading activity</li></ul>"
+            }
+        ]
+    },
+    refunds: {
+        title: "Refund Policies",
+        questions: [
             {
-                q: "How do I get technical support?",
-                a: "<p>We provide 24/7 technical assistance to ensure traders aren't penalized for technical issues.</p><p><strong>Support Channels:</strong></p><ul><li><strong>Live Chat:</strong> Available 24/7 in dashboard</li><li><strong>Email:</strong> support@theonlyprop.com</li><li><strong>Discord Community:</strong> Real-time peer support</li><li><strong>Help Center:</strong> Comprehensive documentation</li></ul><p><strong>Response Times:</strong></p><ul><li>Critical issues: Within 1 hour</li><li>General inquiries: Within 24 hours</li><li>Account reviews: 24-72 hours</li></ul>"
+                q: "What is the Refund Policy?",
+                a: "<p>Evaluation fees are not refunded immediately after purchase. However, The Only Prop refunds the full challenge fee once a trader successfully completes the evaluation and demonstrates consistent performance on the funded account.</p><p>The challenge fee is refunded with the fourth payout from the funded account.</p><p><strong>To qualify for the refund:</strong></p><ul><li>The trader must reach the funded stage</li><li>The trader must receive four successful payouts</li><li>All trading rules must be followed</li><li>The account must remain in good standing</li></ul><p><strong>When Refunds Are Not Eligible:</strong></p><ul><li>Failed evaluations</li><li>Rule violations</li><li>Account termination</li><li>Inactivity breaches</li><li>Payment disputes or chargebacks</li><li>Personal trading losses or mistakes</li></ul><p><strong>Career Program Opportunity:</strong> Traders who demonstrate consistent performance may qualify for The Only Prop Career Program.</p>"
             }
         ]
     }
 };
 
 // Show FAQ Category
-window.showFaqCategory = function(category) {
+window.showFaqCategory = function (category) {
     const data = FAQ_DATA[category];
     const categoryDiv = document.getElementById('help-category');
     const mainDiv = document.getElementById('help-main');
-    
+
     let html = `
         <h3><button class="back-btn" onclick="backToFaqMain()">←</button> ${data.title}</h3>
         <p style="color: #888; font-size: 0.85rem; margin-bottom: 20px;">${data.questions.length} articles</p>
     `;
-    
+
     data.questions.forEach((item, index) => {
         html += `
             <div class="faq-expandable" id="faq-${category}-${index}">
@@ -998,32 +1046,32 @@ window.showFaqCategory = function(category) {
             </div>
         `;
     });
-    
+
     categoryDiv.innerHTML = html;
     mainDiv.style.display = 'none';
     categoryDiv.style.display = 'block';
 };
 
 // Toggle FAQ Answer
-window.toggleFaqAnswer = function(category, index) {
+window.toggleFaqAnswer = function (category, index) {
     const faqItem = document.getElementById(`faq-${category}-${index}`);
     faqItem.classList.toggle('active');
 };
 
 // Back to Main FAQ
-window.backToFaqMain = function() {
+window.backToFaqMain = function () {
     document.getElementById('help-main').style.display = 'block';
     document.getElementById('help-category').style.display = 'none';
 };
 
 // Show Article
-window.showArticle = function(category, index) {
+window.showArticle = function (category, index) {
     const data = FAQ_DATA[category];
     const article = data.questions[index];
     const articleDiv = document.getElementById('help-article');
     const categoryDiv = document.getElementById('help-category');
     const chatContainer = document.querySelector('.chat-container');
-    
+
     const html = `
         <div class="article-header">
             <button class="back-btn" onclick="backToCategory('${category}')" style="margin-bottom: 15px;">← Back</button>
@@ -1034,7 +1082,7 @@ window.showArticle = function(category, index) {
             ${article.a}
         </div>
     `;
-    
+
     articleDiv.innerHTML = html;
     categoryDiv.style.display = 'none';
     articleDiv.style.display = 'block';
@@ -1042,10 +1090,10 @@ window.showArticle = function(category, index) {
 };
 
 // Back to Category
-window.backToCategory = function(category) {
+window.backToCategory = function (category) {
     const chatContainer = document.querySelector('.chat-container');
     chatContainer.classList.remove('expanded');
-    
+
     setTimeout(() => {
         document.getElementById('help-article').style.display = 'none';
         document.getElementById('help-category').style.display = 'block';
@@ -1059,9 +1107,9 @@ const helpMain = document.getElementById('help-main');
 const helpCategory = document.getElementById('help-category');
 
 if (helpSearchInput) {
-    helpSearchInput.addEventListener('input', function(e) {
+    helpSearchInput.addEventListener('input', function (e) {
         const query = e.target.value.trim().toLowerCase();
-        
+
         if (query.length === 0) {
             // Show main help view
             helpSearchResults.style.display = 'none';
@@ -1069,12 +1117,12 @@ if (helpSearchInput) {
             helpCategory.style.display = 'none';
             return;
         }
-        
+
         // Hide main views and show search results
         helpMain.style.display = 'none';
         helpCategory.style.display = 'none';
         helpSearchResults.style.display = 'block';
-        
+
         // Search through FAQ data
         const results = searchFAQ(query);
         displaySearchResults(results, query);
@@ -1084,21 +1132,21 @@ if (helpSearchInput) {
 function searchFAQ(query) {
     const results = [];
     const queryWords = query.split(/\s+/).filter(w => w.length > 0);
-    
+
     // Search through all categories and questions
     for (const [categoryKey, categoryData] of Object.entries(FAQ_DATA)) {
         categoryData.questions.forEach((item, index) => {
             const questionLower = item.q.toLowerCase();
             const answerLower = item.a.toLowerCase().replace(/<[^>]*>/g, ''); // Strip HTML
-            
+
             // Calculate relevance score
             let score = 0;
-            
+
             // Exact phrase match in question (highest priority)
             if (questionLower.includes(query)) {
                 score += 100;
             }
-            
+
             // Word matches in question
             queryWords.forEach(word => {
                 if (questionLower.includes(word)) {
@@ -1108,12 +1156,12 @@ function searchFAQ(query) {
                     score += 2;
                 }
             });
-            
+
             // Category title match
             if (categoryData.title.toLowerCase().includes(query)) {
                 score += 5;
             }
-            
+
             if (score > 0) {
                 results.push({
                     category: categoryKey,
@@ -1126,10 +1174,10 @@ function searchFAQ(query) {
             }
         });
     }
-    
+
     // Sort by relevance score (highest first)
     results.sort((a, b) => b.score - a.score);
-    
+
     return results;
 }
 
@@ -1143,14 +1191,14 @@ function displaySearchResults(results, query) {
         `;
         return;
     }
-    
+
     let html = `<div class="search-results-header">Found ${results.length} result${results.length !== 1 ? 's' : ''}</div>`;
-    
+
     // Show top 10 results
     results.slice(0, 10).forEach(result => {
         // Extract preview text from answer
         const plainAnswer = result.answer.replace(/<[^>]*>/g, '').substring(0, 150);
-        
+
         html += `
             <div class="search-result-item" onclick="showSearchResult('${result.category}', ${result.index})">
                 <div class="search-result-category">${escapeHtml(result.categoryTitle)}</div>
@@ -1159,7 +1207,7 @@ function displaySearchResults(results, query) {
             </div>
         `;
     });
-    
+
     helpSearchResults.innerHTML = html;
 }
 
@@ -1176,14 +1224,14 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-window.showSearchResult = function(category, index) {
+window.showSearchResult = function (category, index) {
     // Clear search
     helpSearchInput.value = '';
     helpSearchResults.style.display = 'none';
-    
+
     // Show the category with the specific question expanded
     showFaqCategory(category);
-    
+
     // Expand the specific question
     setTimeout(() => {
         const faqItem = document.getElementById(`faq-${category}-${index}`);
