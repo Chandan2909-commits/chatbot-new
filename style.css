@@ -1426,10 +1426,18 @@ body {
     transition: border-color 0.2s;
     cursor: pointer;
     min-width: 85px;
+    max-height: 40px;
+    overflow-y: auto;
 }
 
 .country-code-select:focus {
     border-color: var(--primary-color);
+}
+
+.country-code-select option {
+    padding: 8px;
+    background: #1a1a1a;
+    color: #ffffff;
 }
 
 .phone-input-wrapper input {
