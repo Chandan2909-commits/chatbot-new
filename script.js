@@ -696,6 +696,7 @@ async function sendChatToSheets(message) {
             mode: 'no-cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
+                name: state.user_name || '',
                 email: state.user_email,
                 phone: String(state.user_phone),
                 message: message
