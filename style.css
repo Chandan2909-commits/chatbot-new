@@ -1416,16 +1416,16 @@ body {
 }
 
 .country-code-select {
-    padding: 10px 8px;
+    padding: 8px 6px;
     border: 1px solid #444;
     border-radius: 8px;
     background: #1a1a1a;
     color: #ffffff;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     outline: none;
     transition: border-color 0.2s;
     cursor: pointer;
-    width: 120px;
+    width: 95px;
     max-height: 40px;
     overflow-y: auto;
 }
