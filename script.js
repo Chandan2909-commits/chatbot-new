@@ -506,16 +506,18 @@ window.submitVerification = async function() {
     
     // Send to Google Sheets
     try {
+        const payload = {
+            name: name,
+            email: email,
+            phone: fullPhone,
+            message: state.pending_first_message || ''
+        };
+        console.log('Sending to Google Sheets:', payload);
         await fetch(GOOGLE_SHEET_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                phone: fullPhone,
-                message: state.pending_first_message || ''
-            })
+            body: JSON.stringify(payload)
         });
     } catch (error) {
         console.error('Failed to send to Google Sheets:', error);
