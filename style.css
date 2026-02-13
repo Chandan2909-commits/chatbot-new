@@ -1421,11 +1421,11 @@ body {
     border-radius: 8px;
     background: #1a1a1a;
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     outline: none;
     transition: border-color 0.2s;
     cursor: pointer;
-    min-width: 85px;
+    width: 120px;
     max-height: 40px;
     overflow-y: auto;
 }
