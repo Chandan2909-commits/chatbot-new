@@ -784,9 +784,6 @@ chatInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleUserMessage();
 });
 
-// Header Reset Button
-document.getElementById('header-reset-btn').addEventListener('click', startNewChat);
-
 // Widget Toggle Logic
 const chatContainer = document.querySelector('.chat-container');
 const chatLauncher = document.getElementById('chat-launcher');
