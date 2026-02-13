@@ -493,7 +493,7 @@ window.submitVerification = async function() {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<div class="btn-loader"></div>';
     
-    const fullPhone = countryCode + phone;
+    const fullPhone = countryCode + ' ' + phone;
     
     // Send to Google Sheets
     try {
