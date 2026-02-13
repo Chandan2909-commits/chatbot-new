@@ -50,7 +50,9 @@ window.switchToMessages = function() {
         headerDiv.classList.add('messages-header');
         headerDiv.innerHTML = `
             <div class="messages-header-left">
-                <div class="messages-header-avatar">👩</div>
+                <div class="messages-header-avatar">
+                    <img src="https://img.freepik.com/premium-vector/business-woman-character-vector-illustration_1133257-2432.jpg" alt="Kylie">
+                </div>
                 <div class="messages-header-info">
                     <div class="messages-header-title">Kylie</div>
                     <div class="messages-header-status">Online</div>

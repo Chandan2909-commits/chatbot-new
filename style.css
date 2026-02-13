@@ -569,12 +569,14 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 30%, #90CAF9 70%, #64B5F6 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.messages-header-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .messages-header-info {
