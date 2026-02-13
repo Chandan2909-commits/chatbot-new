@@ -19,7 +19,8 @@ let state = {
     pending_first_message: null,
     attached_files: [],
     user_email: null,
-    user_phone: null
+    user_phone: null,
+    suggestions_shown: false
 };
 
 const chatMessages = document.querySelector('.chat-messages');
@@ -368,17 +369,7 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 function showDefaultMessage() {
-    const defaultMsg = `Is there anything else you'd like to know about prop firm rules, challenges, or payouts?`;
-    
-    const suggestionsHtml = `
-        <div class="suggestion-container">
-            ${SUGGESTED_QUESTIONS.map(q =>
-        `<button onclick="handleSuggestion('${q}')" class="suggestion-chip">${q}</button>`
-    ).join('')}
-        </div>
-    `;
-    
-    addMessage(defaultMsg + suggestionsHtml, 'bot', true);
+    // Removed - suggestions only shown at welcome
 }
 
 function showWelcomeMessage() {
@@ -394,6 +385,7 @@ function showWelcomeMessage() {
     `;
 
     addMessage(welcomeMsg + suggestionsHtml, 'bot', true);
+    state.suggestions_shown = true;
 }
 
 window.handleSuggestion = function (text) {
@@ -538,7 +530,8 @@ window.startNewChat = function () {
         pending_first_message: null,
         attached_files: [],
         user_email: null,
-        user_phone: null
+        user_phone: null,
+        suggestions_shown: false
     };
 
     // Reset UI
