@@ -281,12 +281,24 @@ async function handleUserMessage() {
     // Add temporary loading message
     const loadingDiv = document.createElement('div');
     loadingDiv.classList.add('message', 'bot-message', 'loading-msg');
-    loadingDiv.innerHTML = `<div class="message-content">Thinking...</div>`;
+    loadingDiv.innerHTML = `
+        <div class="bot-avatar">Kylie</div>
+        <div class="message-content">
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    `;
     messagesTab.appendChild(loadingDiv);
     messagesTab.scrollTop = messagesTab.scrollHeight;
 
     // Call API with full context logic
     const responseText = await callGroqAPI(input);
+
+    // Wait minimum 2 seconds before showing response
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Remove loading message
     loadingDiv.remove();
@@ -494,12 +506,24 @@ async function processPendingMessage() {
     // Add temporary loading message
     const loadingDiv = document.createElement('div');
     loadingDiv.classList.add('message', 'bot-message', 'loading-msg');
-    loadingDiv.innerHTML = `<div class="message-content">Thinking...</div>`;
+    loadingDiv.innerHTML = `
+        <div class="bot-avatar">Kylie</div>
+        <div class="message-content">
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    `;
     messagesTab.appendChild(loadingDiv);
     messagesTab.scrollTop = messagesTab.scrollHeight;
 
     // Call API with full context logic
     const responseText = await callGroqAPI(input);
+
+    // Wait minimum 2 seconds before showing response
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Remove loading message
     loadingDiv.remove();
