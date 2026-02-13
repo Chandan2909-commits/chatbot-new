@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #007AFF;
+    --primary-color: #3077c3;
     --bg-dark: #050505;
     --text-white: #ffffff;
     --text-grey: #888888;
@@ -571,6 +571,7 @@ body {
     border-radius: 50%;
     flex-shrink: 0;
     overflow: hidden;
+    object-fit: cover;
 }
 
 .messages-header-avatar img {
@@ -618,6 +619,8 @@ body {
     padding: 20px;
     overflow-y: auto;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 #home-tab {
@@ -628,7 +631,7 @@ body {
 
 .home-hero {
     padding: 60px 24px 120px;
-    background: linear-gradient(180deg, #2b7ba8 0%, #1a5f8a 100%);
+    background: linear-gradient(180deg, #092d42 0%, #0a2a3e 100%);
     position: relative;
     margin: 0;
     border-radius: 0;
@@ -703,10 +706,13 @@ body {
 
 .message.bot-message {
     align-self: flex-start;
+    align-items: flex-start;
 }
 
 .message.user-message {
     align-self: flex-end;
+    max-width: fit-content;
+    align-items: flex-end;
 }
 
 .message-content {
@@ -1584,7 +1590,7 @@ body {
 
 .home-hero {
     padding: 100px 30px 120px;
-    background: linear-gradient(180deg, #1a7fb8 0%, #1a7fb8 40%, rgba(26, 127, 184, 0.8) 60%, rgba(26, 127, 184, 0.4) 80%, transparent 100%) !important;
+    background: linear-gradient(180deg, #115c84 0%, #0f547a 40%, rgba(13, 74, 107, 0.8) 60%, rgba(13, 74, 107, 0.4) 80%, transparent 100%) !important;
     position: relative;
 }
 
@@ -1961,7 +1967,7 @@ mark {
     align-items: center;
     justify-content: center;
     color: #666;
-    font-size: 1rem;
+    font-size: 0.65rem;
     font-weight: 700;
     font-family: 'Georgia', serif;
     text-shadow: 0 1px 1px rgba(255,255,255,0.5);
