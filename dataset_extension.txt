@@ -1,0 +1,651 @@
+
+All Collections > About The Only Prop
+1.	What is The Only Prop?
+The Only Prop is a hedge-fund-backed proprietary trading firm that provides traders with funded capital through a structured evaluation process. Our goal is to identify disciplined traders and allocate real capital to those who demonstrate strong risk management and consistency.
+Unlike traditional prop firms, our model is designed to reduce unnecessary restrictions and allow traders to focus purely on performance.
+We offer two evaluation pathways:
+•	One-Step Challenge
+•	Two-Step Challenge
+Both challenges are manually reviewed and designed to assess trading discipline, decision-making, and capital preservation skills before funding is granted.
+2.	What makes The Only Prop different?
+The Only Prop operates with a simplified and trader-focused risk model:
+•	Static 10% maximum drawdown
+•	No daily drawdown limits
+•	No trading restrictions on funded accounts
+•	Manual challenge evaluation process
+•	Backed by a hedge fund capital model
+Once funded, traders operate with significantly fewer constraints compared to industry-standard prop firm models.
+Top-performing traders may also be selected for an exclusive opportunity to trade directly from our physical trading office, where we allocate hedge fund capital to a small percentage of consistently profitable traders.
+Only about 1% of traders reach this level.
+
+
+3.	How do I get started with The Only Prop?
+
+ A step-by-step guide on how to start trading with The Only Prop
+Getting started with The Only Prop is simple and straightforward. Follow these steps to begin your journey toward a funded trading account:
+
+Visit the Checkout Page
+ Choose the challenge that best fits your trading style.
+
+Select Your Challenge
+ Pick between our One-Step Challenge or Two-Step Challenge models.
+
+Trade by The Only Prop Rules
+ Trade the evaluation account while respecting the challenge objectives and the 10% static drawdown rule (no daily drawdown limit).
+
+Pass the Challenge
+ Once the objectives are completed, our team manually reviews the account to ensure the evaluation requirements were met.
+
+Get Funded & Start Trading
+ After successful verification, you will receive your funded account and can begin trading and withdrawing profits according to our payout policy.
+
+
+4.	Who can join The Only Prop?
+ Who is allowed to join The Only Prop.
+The Only Prop is designed for retail traders worldwide who want to demonstrate their trading skills, improve performance, and earn profits through our funded account program. We welcome individuals who are passionate about trading, regardless of prior experience.
+The Only Prop is open to traders from diverse backgrounds and experience levels. Both beginners and experienced traders are welcome to participate. All participants must be at least 18 years of age.
+
+Restricted Jurisdictions & Compliance
+ To comply with international regulations, The Only Prop does not provide services to individuals who are located in or are residents of the following countries or regions:
+•	Democratic People’s Republic of Korea (North Korea)
+•	Iran
+•	South Sudan
+•	Sudan
+•	Yemen
+Additionally, we do not provide services to individuals or entities listed on international sanctions lists or global anti-terrorism compliance lists.
+
+Additional Restrictions
+ The Only Prop does not offer services to:
+•	Individuals listed on international sanctions lists
+•	Persons with criminal histories involving financial crimes or terrorism
+•	Individuals previously banned due to contract violations or policy breaches
+
+__________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+All Collections > Weekend Trading
+1.	Is Weekend Holding Allowed?
+ Written by The Only Prop
+ Updated recently
+Yes — Weekend Holding Is Allowed (With Prior Approval)
+ Traders are permitted to hold positions over the weekend in both challenge and funded phases, but prior approval is required.
+To hold trades over the weekend, traders must email support before the market closes on Friday informing the team that positions will remain open.
+Failure to notify support before the Friday market close will result in a hard breach and account termination.
+You may keep trades open beyond the market close on Friday and continue managing them when the market reopens, provided approval has been granted.
+
+Important Things to Keep in Mind
+ While weekend holding is allowed, please note:
+•	Markets may open with price gaps after the weekend
+•	Slippage or increased volatility can occur at market open
+•	The 10% maximum static drawdown rule still applies
+We strongly recommend managing risk carefully when holding positions over the weekend.
+
+
+
+____________________________________________________________________________________________________
+
+
+All Collections > Trading Rules and Guidelines
+1.	The Only Prop — Two-Step Challenge Model
+The Only Prop Two-Step Challenge consists of two evaluation phases. Traders must successfully complete both phases to qualify for a funded account.
+Each phase evaluates trading discipline, consistency, and risk management before capital allocation.
+
+Phase 1 — Performance Evaluation
+This phase evaluates overall trading ability.
+Trading Objectives
+•	Achieve an 8% profit target
+•	Follow all trading rules
+•	Respect maximum drawdown rules
+After completing Phase 1, the account enters a 24-hour review period.
+ Once approved, the trader advances to Phase 2.
+
+Phase 2 — Verification
+This phase confirms consistent performance.
+Trading Objectives
+•	Achieve a 5% profit target
+•	Continue following all trading rules
+After Phase 2 completion, the account undergoes another 24-hour review before funding.
+This 24-hour review applies to every stage upgrade.
+
+Account Violation (Hard Breach)
+A hard breach represents a serious violation and results in immediate account termination.
+
+Maximum Drawdown Rule
+The Only Prop uses a static drawdown model.
+Maximum Drawdown: 10% of initial account size
+ Daily Drawdown: None
+Your balance or equity must never fall below the maximum loss limit.
+Example
+Account Size: $100,000
+ Maximum Drawdown: $10,000
+ Minimum Equity Allowed: $90,000
+
+Single-Trade Risk Rule
+A trader may risk up to 20% of the total drawdown allowance in one trade.
+Example
+Account Size: $100,000
+ Total Drawdown Allowance: $10,000
+ Maximum Risk Per Trade: $2,000
+Exceeding this limit will be treated as a violation.
+
+Layering
+Opening more than three positions on the same instrument in the same direction simultaneously is not allowed.
+Adding positions to a losing trade, grid trading, or recovery-based entries may be treated as a violation.
+Soft breach during evaluation.
+ Hard breach during funded stage.
+
+Toxic Trading Behavior (Soft Breach)
+Examples include:
+•	Ignoring risk management
+•	Reckless trading behavior
+•	Trading without a clear strategy
+•	Emotion-driven trading
+Repeated violations may lead to restrictions or termination.
+
+Excessive Risk-Taking / Over-Leveraging
+Examples:
+•	Using disproportionately large position sizes
+•	Using maximum lot size repeatedly
+•	Taking trades that can damage the account quickly
+•	Relying heavily on leverage
+
+Martingale Trading Policy
+Martingale includes increasing position size after losses to recover drawdown.
+Examples:
+•	Doubling lot size after a loss
+•	Re-entering trades with larger size after loss
+•	Progressive risk increase after losing trades
+Challenge phase: Soft breach
+ Funded phase: Hard breach
+Expected behavior: consistent risk per trade.
+
+Gambling Behavior
+Examples:
+•	Random entries without analysis
+•	Revenge trading
+•	Emotional trading
+•	Overtrading to recover losses
+
+Overtrading
+Examples:
+•	Too many trades in a short time
+•	Constant entries without confirmation
+•	Emotion-driven execution
+
+Tick Scalping
+Tick scalping refers to extremely fast trades capturing micro-movements.
+Examples:
+•	Opening and closing trades within 120 seconds
+•	High-frequency micro-scalping
+Up to 20% of total trades may be ignored.
+ Beyond that, trades may be reviewed.
+
+Arbitrage Trading (Restricted)
+Opening trades to exploit price differences rather than market direction.
+Example:
+ Buy EURUSD
+ Sell GBPUSD to neutralize exposure.
+This may be treated as a violation.
+
+Hedging
+Improper hedging includes:
+•	Opposite trades on same instrument
+•	Locking positions to remove exposure
+
+Reverse Trading
+Examples:
+•	Intentionally losing trades
+•	Offset trades across accounts
+•	Manipulating exposure
+Trades placed within 15 minutes to neutralize exposure may be flagged.
+
+One-Sided Bias Trading
+Repeated trading in only one direction without justification may trigger review.
+News Trading
+News trading is fully allowed during both the challenge phases and the funded stage.
+Traders may open, close, and manage positions during:
+•	High-impact news releases
+•	Economic announcements
+•	Central bank speeches
+•	Periods of increased market volatility
+There are no timing restrictions around news events.
+However, traders remain responsible for managing their own risk during volatile market conditions. Slippage, spreads, and rapid price movements may occur during news releases.
+All standard account rules, including the maximum drawdown rule, still apply.
+Alright — this will mirror your Two-Step article, but structured for the One-Step Challenge, with the 10% profit target and the same rule system.
+Clean, consistent, and self-contained.
+
+2.	The Only Prop — One-Step Challenge Model
+The Only Prop One-Step Challenge is a single-phase evaluation designed for traders who want a straightforward path to funding.
+This phase evaluates trading discipline, consistency, and risk management before capital allocation.
+
+Phase 1 — Verification
+Trading Objectives
+•	Achieve a 10% profit target
+•	Follow all trading rules
+•	Respect maximum drawdown rules
+After completing the profit target, the account enters a 24-hour trading behavior review.
+ Once approved, the trader proceeds to the funded stage.
+This 24-hour review applies to all stage upgrades.
+
+Account Violation (Hard Breach)
+A hard breach represents a serious violation and results in immediate account termination.
+
+Maximum Drawdown Rule
+The Only Prop uses a static drawdown model.
+Maximum Drawdown: 10% of initial account size
+ Daily Drawdown: None
+Your balance or equity must never fall below the maximum loss limit.
+Example
+Account Size: $100,000
+ Maximum Drawdown: $10,000
+ Minimum Equity Allowed: $90,000
+
+Single-Trade Risk Rule
+A trader may risk up to 20% of the total drawdown allowance in one trade.
+Example
+Account Size: $100,000
+ Total Drawdown Allowance: $10,000
+ Maximum Risk Per Trade: $2,000
+Exceeding this limit will be treated as a violation.
+
+Layering
+Opening more than three positions on the same instrument in the same direction simultaneously is not allowed.
+Adding positions to trades already in drawdown, grid trading, or recovery-based entries may be treated as a violation.
+Soft breach during challenge phase.
+ Hard breach during funded stage.
+
+Toxic Trading Behavior (Soft Breach)
+Examples include:
+•	Ignoring risk management
+•	Reckless trading behavior
+•	Trading without a clear strategy
+•	Emotion-driven trading
+Repeated violations may lead to restrictions or termination.
+
+Excessive Risk-Taking / Over-Leveraging
+Examples:
+•	Using disproportionately large position sizes
+•	Using maximum lot size repeatedly
+•	Taking trades that can damage the account quickly
+•	Relying heavily on leverage
+
+Martingale Trading Policy
+Martingale includes increasing position size after losses to recover drawdown.
+Examples:
+•	Doubling lot size after a loss
+•	Re-entering trades with larger size after loss
+•	Progressive risk increase after losing trades
+Challenge phase: Soft breach
+ Funded phase: Hard breach
+Expected behavior: consistent risk per trade.
+
+Gambling Behavior
+Examples:
+•	Random entries without analysis
+•	Revenge trading
+•	Emotional trading
+•	Overtrading to recover losses
+
+Overtrading
+Examples:
+•	Too many trades in a short time
+•	Constant entries without confirmation
+•	Emotion-driven execution
+
+Tick Scalping
+Tick scalping refers to extremely fast trades capturing micro-movements.
+Examples:
+•	Opening and closing trades within 120 seconds
+•	High-frequency micro-scalping
+Up to 20% of total trades may be ignored.
+ Beyond that, trades may be reviewed.
+
+Arbitrage Trading (Restricted)
+Opening trades to exploit price differences rather than market direction.
+Example:
+ Buy EURUSD
+ Sell GBPUSD to neutralize exposure.
+This may be treated as a violation.
+
+Hedging
+Improper hedging includes:
+•	Opposite trades on the same instrument
+•	Locking positions to remove exposure
+
+Reverse Trading
+Examples:
+•	Intentionally losing trades
+•	Offset trades across accounts
+•	Manipulating exposure
+Trades placed within 15 minutes to neutralize exposure may be flagged.
+
+One-Sided Bias Trading
+Repeated trading in only one direction without justification may trigger review.
+
+News Trading
+News trading is fully allowed during both the challenge phase and the funded stage.
+Traders may open, close, and manage positions during:
+•	High-impact news releases
+•	Economic announcements
+•	Central bank speeches
+•	Volatile market conditions
+There are no timing restrictions around news events.
+However, traders remain responsible for managing risk during volatility.
+ All standard account rules, including the maximum drawdown rule, still apply.
+___________________________________________________________________________________________________________
+
+
+
+
+
+
+All Collections > KYC (Know Your Customer)
+1.Why Is Completing KYC Necessary for My Account?
+Completing the Know Your Customer (KYC) process is a mandatory step to maintain a secure, fair, and compliant trading environment at The Only Prop Firm.
+
+Why KYC Is Required
+1. Legal & Regulatory Compliance
+KYC allows The Only Prop to comply with international regulations designed to prevent:
+•	Fraud
+•	Money laundering
+•	Identity misuse
+•	Financial crime
+By verifying identities, we ensure all accounts belong to real and legitimate individuals.
+
+2. Account Security & Protection
+KYC adds an additional layer of security by linking trading accounts to verified personal information.
+This helps prevent:
+•	Unauthorized account access
+•	Identity theft
+•	Account misuse
+If a security issue occurs, verified information allows faster resolution.
+
+3. Fair Trading Environment
+Identity verification helps ensure that:
+•	One individual does not operate multiple accounts
+•	Duplicate or fraudulent accounts are prevented
+•	All traders are evaluated under equal conditions
+This protects genuine traders and maintains evaluation integrity.
+
+4. Payout Eligibility
+KYC verification must be completed before any payout request can be processed.
+This ensures:
+•	Profits are paid to the correct account holder
+•	Withdrawals are processed securely
+•	Disputes and delays are minimized
+Without completed KYC verification, payouts cannot be approved.
+
+  2.  What Documents Are Required for KYC Verification?
+To complete KYC verification, traders must submit valid documents confirming their identity and residential address.
+
+1. Personal Identification (Required)
+You must submit one valid government-issued photo ID.
+Accepted Documents
+•	Passport (preferred)
+•	Driver’s License
+•	National ID Card
+Important Requirements
+•	The document must be valid and not expired
+•	The photo and personal details must be clear and readable
+•	The name on the ID must match the name on your The Only Prop account
+3.How Long Does KYC Verification Take?
+KYC verification is required to unlock full account access, including payouts. The Only Prop aims to complete verification as quickly as possible while maintaining security and compliance standards.
+
+KYC Verification Timeframe
+Instant Verification:
+ In some cases, KYC may be approved instantly when documents are clear, valid, and meet all requirements.
+Standard Verification:
+ Most KYC checks are completed within 1–2 business days after document submission.
+
+What Can Affect Verification Time?
+Verification may take longer if:
+•	Documents are blurry or cropped
+•	Information does not match account details
+•	Documents are expired or incomplete
+•	Additional verification checks are required
+Submitting clear and accurate documents helps avoid delays.
+
+How Will I Know When KYC Is Completed?
+•	You will receive an email confirmation
+•	Your account status will update in your dashboard
+•	Full account features, including payout access, will be unlocked
+
+If Verification Takes Longer Than Expected
+If your KYC verification takes longer than 2 business days:
+•	Check your email for follow-up requests
+•	Confirm all required documents were submitted
+•	Contact support for assistance
+
+4. What Happens If My KYC Application Is Rejected?
+If your KYC application is rejected, it does not mean you are permanently disqualified. Rejections usually occur due to missing, unclear, or mismatched information and can typically be resolved quickly.
+
+Common Reasons for KYC Rejection
+Your KYC application may be rejected if:
+•	Documents are blurry, cropped, or low quality
+•	Documents are expired
+•	Name or address does not match your account details
+•	Required documents are missing or incomplete
+•	Suspicious or altered documents are detected
+
+What Happens After a Rejection?
+1. Rejection Notification
+You will receive an email explaining the reason for the rejection, along with instructions on what needs to be corrected.
+
+2. Resubmission Opportunity
+In most cases, you will be allowed to resubmit corrected documents.
+•	Follow the instructions carefully
+•	Upload clear and valid documents
+•	Ensure all details match your account information
+Once resubmitted, the verification process will restart.
+
+How Long Does Re-Verification Take?
+Re-verification typically takes 1–2 business days.
+ Some applications may be approved faster if corrections are clear and complete.
+
+What If the Issue Cannot Be Resolved?
+If the required documents cannot be provided:
+•	Contact support to discuss alternative verification options
+•	Account access may remain limited until verification is completed
+•	Payouts and certain features will remain restricted
+
+How to Avoid KYC Rejection
+•	Upload high-quality images
+•	Ensure documents are valid and not expired
+•	Double-check that names and addresses match exactly
+•	Submit complete documents with all corners visible
+
+
+________________________________________________________________________________________________________
+
+
+
+
+
+
+
+All Collections > Withdrawals
+
+
+1.	What Is the Minimum Amount Required for a Withdrawal?
+To ensure efficient processing and reduce transaction costs, The Only Prop applies a minimum withdrawal requirement.
+
+Minimum Withdrawal Amount?
+Minimum Withdrawal: 1% of the initial account size
+Withdrawal requests below this amount cannot be processed.
+Profits and eligible balances may be combined to meet the minimum requirement.
+Giveaway accounts have a withdrawal limit of 2% only.
+
+Why Is There a Minimum Withdrawal Requirement?
+The minimum withdrawal requirement exists to:
+•	Reduce administrative and processing overhead
+•	Minimize transaction and network fees
+•	Ensure a smoother payout experience for all traders
+Larger, less frequent withdrawals help keep payout operations efficient and reliable.
+
+2.	What are the Withdrawal Methods?
+Available payout methods may include:
+•	Cryptocurrency (USDT and other supported crypto assets)
+•	UPI transfers
+•	Bank transfers
+•	E-wallet payments (where available)
+Payment options may vary depending on location, availability, and payout method selected by the trader.
+
+3.	Requirements Before Withdrawing?
+Before submitting a withdrawal request, make sure the following conditions are met:
+•	Your profit meets the minimum withdrawal requirement of 1% of the initial account size
+•	You have completed at least 5 trading days on the funded account
+•	KYC verification is completed and approved
+•	All trading rules and profit-split conditions are met
+•	No active violations or restrictions exist on your account
+•	The account balance is above the starting balance
+
+Important Withdrawal Rule
+Once a withdrawal request is submitted, no trading activity is allowed on the account.
+Placing any trade after requesting a payout will be treated as a hard breach, and the account may be terminated.
+
+4.	How Long Does It Take to Receive a Withdrawal?
+The Only Prop processes withdrawal requests on a weekly payout cycle while ensuring all compliance and security checks are completed.
+
+Withdrawal Processing Time
+Payout Processing Day: Wednesday
+All approved withdrawal requests are processed on Wednesday each week.
+Once processed, the time required for funds to arrive depends on the selected payout method (crypto, UPI, bank transfer, or e-wallet).
+Most payouts are completed within 24–48 hours after Wednesday processing.
+
+Possible Delays
+In some cases, withdrawals may take longer due to:
+•	Weekends
+•	Public holidays
+•	Banking hours or payment provider schedules
+•	Additional compliance or security checks
+These delays are normal and outside of The Only Prop’s direct control.
+
+When Does the Processing Time Start?
+Withdrawal processing begins once:
+•	A withdrawal request is submitted
+•	KYC verification is fully approved
+•	The trader has completed at least 5 trading days on the funded account
+•	The account meets the minimum withdrawal requirement (1% of initial balance)
+•	The account passes all risk and compliance checks
+•	No trades are placed after the withdrawal request
+
+_________________________________________________________________________________________________________
+
+
+
+
+
+All Collections > Account Security & Access Rules
+
+1.	What is the IP Address Policy?
+There is No IP address location restrictions for traders.
+Traders may access their accounts from different locations, devices, or networks without violating account rules.
+
+Account Access & Security
+While there are no IP region restrictions, traders remain responsible for maintaining account security.
+The following practices are still prohibited:
+•	Account sharing
+•	Unauthorized third-party access
+•	Selling or transferring account access
+•	Using compromised or stolen identities
+If suspicious account activity is detected, the Risk Management Team may request identity verification to protect the account.
+
+Important Notes
+•	Traders may travel and trade freely without notifying support
+•	Logging in from different networks or locations is allowed
+•	Using different devices is allowed
+•	Basic account security monitoring still applies
+The purpose of this approach is to give traders flexibility while maintaining account safety.
+
+
+2.	What is the Inactivity Policy?
+To ensure active participation and proper account usage, The Only Prop enforces an inactivity rule across all account stages.
+
+Inactivity Rule
+If a trading account remains inactive for 14 consecutive days, it will be treated as a hard breach, and the account will be terminated.
+This rule applies to:
+•	Phase 1 accounts
+•	Phase 2 accounts
+•	Funded accounts
+
+What Counts as Inactivity?
+An account is considered inactive if:
+•	No trades are placed
+•	No trading activity occurs
+•	The account remains idle for 14 continuous days
+
+How to Avoid Inactivity Breach
+•	Place at least one trade within every 14-day period
+•	Maintain regular trading activity
+Failure to meet this requirement will result in account termination due to inactivity.
+
+__________________________________________________________________________________________________________
+
+
+
+All Collections > Refund Policies
+
+1.	What is the Refund Policy?
+Evaluation fees are not refunded immediately after purchase.
+However, The Only Prop refunds the full challenge fee once a trader successfully completes the evaluation and demonstrates consistent performance on the funded account.
+The challenge fee is refunded with the fourth payout from the funded account.
+To qualify for the refund:
+•	The trader must reach the funded stage
+•	The trader must receive four successful payouts
+•	All trading rules must be followed
+•	The account must remain in good standing
+
+Why Evaluation Fees Exist
+Evaluation fees cover:
+•	Platform access
+•	Technology and infrastructure
+•	Risk monitoring systems
+•	Operational and administrative costs
+These costs begin once the evaluation account is activated.
+
+When Refunds Are Not Eligible
+Refunds will not be issued for:
+•	Failed evaluations
+•	Rule violations
+•	Account termination
+•	Inactivity breaches
+•	Payment disputes or chargebacks
+•	Personal trading losses or mistakes
+If an account is terminated before reaching the funded payout milestone, the evaluation fee remains non-refundable.
+
+Career Program Opportunity
+Traders who demonstrate consistent performance may qualify for The Only Prop Career Program.
+Traders who:
+•	Reach the funded stage
+•	Receive four payouts
+•	Maintain strong trading discipline
+may become eligible to apply for direct capital allocation opportunities.
+Top-performing traders (approximately top 1%) may be selected to trade from The Only Prop’s physical office environment, working alongside our hedge fund capital allocation structure.
+This program is designed for traders who show long-term consistency and professional risk management.
+
+Agreement to Refund Policy
+By purchasing any The Only Prop evaluation program, you acknowledge that:
+•	Evaluation fees are performance-based refundable
+•	Refund eligibility depends on reaching the funded payout milestone
+•	All program rules must be followed
+
+_________________________________________________________________________________________________________
+END OF DOCUMENT
+
+
+
+
+
+
+
+
+
+
+
