@@ -561,6 +561,24 @@ body {
 
 .messages-header-left {
     display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.messages-header-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 30%, #90CAF9 70%, #64B5F6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.messages-header-info {
+    display: flex;
     flex-direction: column;
     gap: 2px;
 }
@@ -1931,15 +1949,15 @@ mark {
 }
 
 .bot-avatar {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 30%, #90CAF9 70%, #64B5F6 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #666;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     font-family: 'Georgia', serif;
     text-shadow: 0 1px 1px rgba(255,255,255,0.5);

@@ -50,8 +50,11 @@ window.switchToMessages = function() {
         headerDiv.classList.add('messages-header');
         headerDiv.innerHTML = `
             <div class="messages-header-left">
-                <div class="messages-header-title">Kylie</div>
-                <div class="messages-header-status">Online</div>
+                <div class="messages-header-avatar">👩</div>
+                <div class="messages-header-info">
+                    <div class="messages-header-title">Kylie</div>
+                    <div class="messages-header-status">Online</div>
+                </div>
             </div>
             <button class="messages-header-close" onclick="closeMessagesTab()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
