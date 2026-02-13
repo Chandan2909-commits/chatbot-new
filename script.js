@@ -52,7 +52,7 @@ window.switchToMessages = function () {
         headerDiv.innerHTML = `
             <div class="messages-header-left">
                 <div class="messages-header-avatar">
-                    <img src="Kylie Avatar.png" alt="Kylie Avatar">
+                    <img src="Kylie Avatar (1).png" alt="Kylie Avatar">
                 </div>
                 <div class="messages-header-info">
                     <div class="messages-header-title">Kylie</div>
