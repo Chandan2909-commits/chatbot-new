@@ -1,3 +1,4 @@
+import { GENERAL_QA_DATASET, PROP_FIRM_QA_DATASET } from './dataset.js';
 
 const CUSTOMER_CARE_NUMBER = "14545454";
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzuzQWPc85A9RSJ3mdtYj7NGym8rCOjunMGAMluVEf9k4hssAGrVxwfXG4d1RzYcLoE/exec";
