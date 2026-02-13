@@ -18,6 +18,7 @@ let state = {
     user_verified: false,
     pending_first_message: null,
     attached_files: [],
+    user_name: null,
     user_email: null,
     user_phone: null,
     suggestions_shown: false
@@ -422,6 +423,7 @@ function showVerificationForm() {
         <div class="message-content">
             <p style="margin-bottom: 12px;">Before we continue, please provide your contact details:</p>
             <div class="verification-form">
+                <input type="text" id="user-name" placeholder="Full name" required />
                 <input type="email" id="user-email" placeholder="Email address" required />
                 <div class="phone-input-wrapper">
                     <select id="country-code" class="country-code-select">
@@ -469,11 +471,18 @@ function showVerificationForm() {
 
 // Submit verification
 window.submitVerification = async function() {
+    const name = document.getElementById('user-name').value.trim();
     const email = document.getElementById('user-email').value.trim();
     const countryCode = document.getElementById('country-code').value;
     const phone = document.getElementById('user-phone').value.trim();
     const errorDiv = document.getElementById('verification-error');
     const submitBtn = document.querySelector('.verify-btn');
+    
+    // Validate name
+    if (!name || name.length < 2) {
+        errorDiv.textContent = 'Please enter your full name';
+        return;
+    }
     
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -502,6 +511,7 @@ window.submitVerification = async function() {
             mode: 'no-cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
+                name: name,
                 email: email,
                 phone: fullPhone,
                 message: state.pending_first_message || ''
@@ -513,6 +523,7 @@ window.submitVerification = async function() {
     
     // Mark as verified and store user info
     state.user_verified = true;
+    state.user_name = name;
     state.user_email = email;
     state.user_phone = fullPhone;
     errorDiv.textContent = '';
@@ -521,6 +532,7 @@ window.submitVerification = async function() {
     submitBtn.innerHTML = 'Verified ✓';
     
     // Disable form
+    document.getElementById('user-name').disabled = true;
     document.getElementById('user-email').disabled = true;
     document.getElementById('country-code').disabled = true;
     document.getElementById('user-phone').disabled = true;
@@ -610,6 +622,7 @@ window.startNewChat = function () {
         user_verified: false,
         pending_first_message: null,
         attached_files: [],
+        user_name: null,
         user_email: null,
         user_phone: null,
         suggestions_shown: false

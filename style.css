@@ -1373,7 +1373,7 @@ body {
 
 .verify-btn {
     padding: 10px 16px;
-    background: var(--primary-color);
+    background: #2c3e50;
     color: white;
     border: none;
     border-radius: 8px;
@@ -1381,10 +1381,13 @@ body {
     font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .verify-btn:hover:not(:disabled) {
-    background: #0066d6;
+    background: #34495e;
 }
 
 .verify-btn:disabled {
