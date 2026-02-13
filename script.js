@@ -441,6 +441,7 @@ window.submitVerification = async function() {
     const email = document.getElementById('user-email').value.trim();
     const phone = document.getElementById('user-phone').value.trim();
     const errorDiv = document.getElementById('verification-error');
+    const submitBtn = document.querySelector('.verify-btn');
     
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -455,6 +456,10 @@ window.submitVerification = async function() {
         errorDiv.textContent = 'Please enter a valid phone number (10-15 digits)';
         return;
     }
+    
+    // Show loading on submit button
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<div class="btn-loader"></div>';
     
     // Send to Google Sheets
     try {
@@ -478,11 +483,12 @@ window.submitVerification = async function() {
     state.user_phone = phone;
     errorDiv.textContent = '';
     
+    // Update button to verified state
+    submitBtn.innerHTML = 'Verified ✓';
+    
     // Disable form
     document.getElementById('user-email').disabled = true;
     document.getElementById('user-phone').disabled = true;
-    document.querySelector('.verify-btn').disabled = true;
-    document.querySelector('.verify-btn').textContent = 'Verified ✓';
     
     // Re-enable chat input
     chatInput.disabled = false;
