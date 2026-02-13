@@ -423,7 +423,38 @@ function showVerificationForm() {
             <p style="margin-bottom: 12px;">Before we continue, please provide your contact details:</p>
             <div class="verification-form">
                 <input type="email" id="user-email" placeholder="Email address" required />
-                <input type="tel" id="user-phone" placeholder="Phone number" required />
+                <div class="phone-input-wrapper">
+                    <select id="country-code" class="country-code-select">
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+91" selected>🇮🇳 +91</option>
+                        <option value="+86">🇨🇳 +86</option>
+                        <option value="+81">🇯🇵 +81</option>
+                        <option value="+49">🇩🇪 +49</option>
+                        <option value="+33">🇫🇷 +33</option>
+                        <option value="+39">🇮🇹 +39</option>
+                        <option value="+34">🇪🇸 +34</option>
+                        <option value="+7">🇷🇺 +7</option>
+                        <option value="+61">🇦🇺 +61</option>
+                        <option value="+55">🇧🇷 +55</option>
+                        <option value="+52">🇲🇽 +52</option>
+                        <option value="+82">🇰🇷 +82</option>
+                        <option value="+62">🇮🇩 +62</option>
+                        <option value="+90">🇹🇷 +90</option>
+                        <option value="+31">🇳🇱 +31</option>
+                        <option value="+46">🇸🇪 +46</option>
+                        <option value="+41">🇨🇭 +41</option>
+                        <option value="+48">🇵🇱 +48</option>
+                        <option value="+27">🇿🇦 +27</option>
+                        <option value="+20">🇪🇬 +20</option>
+                        <option value="+234">🇳🇬 +234</option>
+                        <option value="+971">🇦🇪 +971</option>
+                        <option value="+966">🇸🇦 +966</option>
+                        <option value="+65">🇸🇬 +65</option>
+                        <option value="+60">🇲🇾 +60</option>
+                    </select>
+                    <input type="tel" id="user-phone" placeholder="Phone number" required />
+                </div>
                 <button onclick="submitVerification()" class="verify-btn">Submit</button>
                 <div id="verification-error" class="verification-error"></div>
             </div>
@@ -439,6 +470,7 @@ function showVerificationForm() {
 // Submit verification
 window.submitVerification = async function() {
     const email = document.getElementById('user-email').value.trim();
+    const countryCode = document.getElementById('country-code').value;
     const phone = document.getElementById('user-phone').value.trim();
     const errorDiv = document.getElementById('verification-error');
     const submitBtn = document.querySelector('.verify-btn');
@@ -450,16 +482,18 @@ window.submitVerification = async function() {
         return;
     }
     
-    // Validate phone (digits only, 10-15 digits)
-    const phoneRegex = /^\d{10,15}$/;
+    // Validate phone (digits only, 7-15 digits)
+    const phoneRegex = /^\d{7,15}$/;
     if (!phoneRegex.test(phone)) {
-        errorDiv.textContent = 'Please enter a valid phone number (10-15 digits)';
+        errorDiv.textContent = 'Please enter a valid phone number (7-15 digits)';
         return;
     }
     
     // Show loading on submit button
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<div class="btn-loader"></div>';
+    
+    const fullPhone = countryCode + phone;
     
     // Send to Google Sheets
     try {
@@ -469,7 +503,7 @@ window.submitVerification = async function() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 email: email,
-                phone: phone,
+                phone: fullPhone,
                 message: state.pending_first_message || ''
             })
         });
@@ -480,7 +514,7 @@ window.submitVerification = async function() {
     // Mark as verified and store user info
     state.user_verified = true;
     state.user_email = email;
-    state.user_phone = phone;
+    state.user_phone = fullPhone;
     errorDiv.textContent = '';
     
     // Update button to verified state
@@ -488,6 +522,7 @@ window.submitVerification = async function() {
     
     // Disable form
     document.getElementById('user-email').disabled = true;
+    document.getElementById('country-code').disabled = true;
     document.getElementById('user-phone').disabled = true;
     
     // Re-enable chat input
